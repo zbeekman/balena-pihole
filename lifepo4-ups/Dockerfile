@@ -23,5 +23,9 @@ RUN update-rc.d lifepo4wered-daemon defaults
 RUN service lifepo4wered-daemon restart
 
 RUN lifepo4wered-cli || true
+RUN ls -l /usr/local/bin/lifepo4wered-cli /usr/local/sbin/lifepo4wered-daemon /usr/local/lib/liblifepo4wered.so /etc/init.d/lifepo4wered-daemon
+RUN cat /etc/init.d/lifepo4wered-daemon
 
-# COPY ./provision_ups.sh /usr/local/sbin
+COPY ensure-ups.sh /usr/bin/
+
+CMD ["/usr/bin/ensure-ups.sh"]
