@@ -22,6 +22,6 @@ COPY --from=build /etc/init.d/lifepo4wered-daemon /etc/init.d/
 RUN update-rc.d lifepo4wered-daemon defaults
 RUN service lifepo4wered-daemon restart
 
-RUN lifepo4wered-cli set auto_boot 1 ; lifepo4wered-cli set cfg_write 0x46
+RUN lifepo4wered-cli || true
 
 # COPY ./provision_ups.sh /usr/local/sbin
