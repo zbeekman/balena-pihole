@@ -1,4 +1,4 @@
-#!/usr/bin/env/ bash
+#!/usr/bin/env bash
 # Don't run the daemon in the background because the shell will exit.
 
 update-rc.d lifepo4wered-daemon defaults
