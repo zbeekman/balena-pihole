@@ -13,6 +13,8 @@ FROM balenalib/raspberrypi3-debian:jessie-run
 WORKDIR /usr/src
 
 COPY --from=build /usr/src/* /usr/src/
+RUN ls -la
+RUN tree .
 RUN cat ./INSTALL.sh ; ./INSTALL.sh
 RUN lifepo4wered-cli set auto_boot 1 ; lifepo4wered-cli set cfg_write 0x46
 RUN ls -la .
