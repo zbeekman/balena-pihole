@@ -24,3 +24,7 @@ services:
       - 'dnscrypt_config:/config'
     ports:
       - '5053:5053/udp'
+
+  lifepo4-ups:
+    build: ./lifepo4-ups
+    privileged: true
