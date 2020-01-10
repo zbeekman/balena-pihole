@@ -6,7 +6,8 @@ RUN install_packages python libraspberrypi-dev tree
 
 RUN git clone https://github.com/xorbit/LiFePO4wered-Pi.git .
 RUN chmod +x build.py ; ./build.py
-RUN sed -i '/^ *# [Cc]heck/,$d' INSTALL.sh ; chmod +x INSTALL.sh ; cat INSTALL.sh
+RUN sed -i -e '/^ *# [Cc]heck/,$d' -e 's/build\//.\//g' INSTALL.sh ; chmod +x INSTALL.sh ; cat INSTALL.sh
+RUN tree
 
 FROM balenalib/raspberrypi3-debian:jessie-run
 
