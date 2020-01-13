@@ -1,16 +1,15 @@
-FROM balenalib/raspberrypi3-debian:jessie-build AS build
+FROM balenalib/%%BALENA_ARCH%%-debian:jessie-build AS build
 
 WORKDIR /usr/src
 
-RUN install_packages python libraspberrypi-dev tree
+RUN install_packages python
 
 RUN git clone https://github.com/xorbit/LiFePO4wered-Pi.git .
 RUN chmod +x build.py ; ./build.py
-RUN sed -i '/^ *# [Cc]heck/,$d' INSTALL.sh ; chmod +x INSTALL.sh ; cat INSTALL.sh
-RUN tree
+RUN sed -i '/^ *# [Cc]heck/,$d' INSTALL.sh ; chmod +x INSTALL.sh
 RUN ./INSTALL.sh
 
-FROM balenalib/raspberrypi3-debian:jessie-run
+FROM balenalib/%%BALENA_ARCH%%-debian:jessie-run
 
 WORKDIR /usr/src
 
@@ -23,9 +22,7 @@ RUN echo "" >> /etc/modules ; \
     echo "# Load I2C device module" >> /etc/modules ; \
     echo "i2c-dev" >> /etc/modules
 
-RUN lifepo4wered-cli || true
 RUN ls -l /usr/local/bin/lifepo4wered-cli /usr/local/sbin/lifepo4wered-daemon /usr/local/lib/liblifepo4wered.so /etc/init.d/lifepo4wered-daemon
-RUN cat /etc/init.d/lifepo4wered-daemon
 
 COPY ensure-ups.sh /usr/bin/
 
