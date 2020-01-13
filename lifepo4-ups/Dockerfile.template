@@ -26,4 +26,4 @@ RUN ls -l /usr/local/bin/lifepo4wered-cli /usr/local/sbin/lifepo4wered-daemon /u
 
 COPY ensure-ups.sh /usr/bin/
 
-CMD ["/usr/bin/ensure-ups.sh"]
+CMD modprobe i2c-dev && /usr/bin/ensure-ups.sh
