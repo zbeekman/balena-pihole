@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_ARCH%%-debian:jessie-build AS build
+FROM balenalib/raspberrypi3-debian:jessie-build AS build
 
 WORKDIR /usr/src
 
@@ -9,7 +9,7 @@ RUN chmod +x build.py ; ./build.py
 RUN sed -i '/^ *# [Cc]heck/,$d' INSTALL.sh ; chmod +x INSTALL.sh
 RUN ./INSTALL.sh
 
-FROM balenalib/%%BALENA_ARCH%%-debian:jessie-run
+FROM balenalib/raspberrypi3-debian:jessie-run
 
 WORKDIR /usr/src
 

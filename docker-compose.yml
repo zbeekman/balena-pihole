@@ -16,6 +16,9 @@ services:
       - '127.0.0.1'
       - '1.1.1.1'
     network_mode: host
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
 
   # set pihole DNS1 and DNS2 service variables to 127.0.0.1#5053 to use dnscrypt-proxy for upstream DNS
   dnscrypt-proxy:
