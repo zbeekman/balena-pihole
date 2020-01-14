@@ -62,7 +62,7 @@ ipv6_servers = false
 dnscrypt_servers = true
 
 # Use servers implementing the DNS-over-HTTPS protocol
-doh_servers = true
+doh_servers = false
 
 
 ## Require servers defined by remote sources to satisfy specific properties
