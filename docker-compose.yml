@@ -34,8 +34,8 @@ services:
     build: ./dnscrypt-proxy
     volumes:
       - 'dnscrypt_config:/config'
-    ports:
-      - '5053:5053/udp'
+    expose:
+      - '5053'
     restart: unless-stopped
 
   lifepo4-ups:
