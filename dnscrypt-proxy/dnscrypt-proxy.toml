@@ -34,7 +34,7 @@
 ## Example with both IPv4 and IPv6:
 ## listen_addresses = ['127.0.0.1:53', '[::1]:53']
 
-listen_addresses = ['0.0.0.0:5053']
+listen_addresses = ['127.0.0.1:5053', '[::1]:5053']
 
 
 ## Maximum number of simultaneous client connections to accept
@@ -47,7 +47,7 @@ max_clients = 250
 ## Note (2): this feature is not compatible with systemd socket activation.
 ## Note (3): when using -pidfile, the PID file directory must be writable by the new user
 
-# user_name = 'nobody'
+user_name = 'nobody'
 
 
 ## Require servers (from static + remote sources) to satisfy specific properties
@@ -297,7 +297,7 @@ reject_ttl = 600
 ## example.com 9.9.9.9
 ## example.net 9.9.9.9,8.8.8.8,1.1.1.1
 
-# forwarding_rules = 'forwarding-rules.txt'
+forwarding_rules = 'forwarding-rules.txt'
 
 
 
@@ -313,11 +313,11 @@ reject_ttl = 600
 ## example.com     10.1.1.1
 ## www.google.com  forcesafesearch.google.com
 
-# cloaking_rules = 'cloaking-rules.txt'
+cloaking_rules = 'cloaking-rules.txt'
 
 ## TTL used when serving entries in cloaking-rules.txt
 
-# cloak_ttl = 600
+cloak_ttl = 600
 
 
 ###########################
@@ -397,8 +397,8 @@ cache_neg_max_ttl = 600
   ## Path to the query log file (absolute, or relative to the same directory as the config file)
   ## Can be /dev/stdout to log to the standard output (and set log_files_max_size to 0)
 
-  # file = 'query.log'
-
+  file = '/dev/stdout'
+  log_files_max_size = 0
 
   ## Query log format (currently supported: tsv and ltsv)
 
@@ -481,12 +481,13 @@ cache_neg_max_ttl = 600
 
   ## Path to the file of blocking rules (absolute, or relative to the same directory as the config file)
 
-  # blacklist_file = 'ip-blacklist.txt'
+  blacklist_file = 'ip-blacklist.txt'
 
 
   ## Optional path to a file logging blocked queries
 
-  # log_file = 'ip-blocked.log'
+  log_file = '/dev/stdout'
+  log_files_max_size = 0
 
 
   ## Optional log format: tsv or ltsv (default: tsv)
