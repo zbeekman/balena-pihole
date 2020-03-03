@@ -20,6 +20,7 @@ services:
       - 'dnsmasq_config:/etc/dnsmasq.d'
     dns:
       - '127.0.0.1'
+      - '1.1.1.1'
     depends_on:
       - dnscrypt-proxy
     network_mode: host
