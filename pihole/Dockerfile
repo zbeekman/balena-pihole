@@ -1,4 +1,4 @@
-FROM pihole/pihole:4.3.2-1_aarch64
+FROM pihole/pihole:4.4-arm64
 
 RUN sed -i '/$AUTHORIZED_HOSTNAMES = array(/ a "balena-devices.com",' /var/www/html/admin/scripts/pi-hole/php/auth.php
 
